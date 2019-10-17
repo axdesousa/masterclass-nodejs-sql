@@ -1,11 +1,15 @@
-const express = require('express');
-const routes = require('./routes');
+const express = require("express")
+const routes = require("./routes")
 
-require('./database');
+const dotenv = require("dotenv")
 
-const app = express();
+dotenv.config()
 
-app.use(express.json());
-app.use(routes);
+require("./database")
 
-app.listen(3333);
+const app = express()
+
+app.use(express.json())
+app.use(routes)
+
+app.listen(3333)
