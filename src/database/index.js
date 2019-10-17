@@ -7,13 +7,13 @@ const dbConfig = require("../config/database")
 const connection = new Sequelize(dbConfig)
 
 const models = []
-
-fs.readdirSync(__dirname)
+const dirModels = __dirname + `/../models`
+fs.readdirSync(dirModels)
     .filter(file => {
-        return file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
+        return file.slice(-3) === ".js"
     })
     .forEach(file => {
-        models.push(require(file))
+        models.push(require(`${dirModels}/${file}`))
     })
 
 models.forEach(model => {
